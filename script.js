@@ -37,11 +37,11 @@ function Collect() {
     var timezonefi;
     if (button == "on") {
         timezonein = Data();
-        document.getElementById("id").innerHTML = timezonein;
+    document.getElementById("start_time").innerHTML = `<h1>${timezonein}</h1>`
     }
     else {
         timezonefi = Data();
-        document.getElementById("id").innerHTML = timezonefi;
+        document.getElementById("end_time").innerHTML =`<h1>${timezonefi}</h1>`
     }
 }
 
