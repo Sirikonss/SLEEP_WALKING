@@ -115,7 +115,9 @@ section{
 .container {
     margin-top: 160px;
     text-align: center;
-    padding: 3rem;    
+    padding: 3rem;   
+    
+    
 }
 
 .container h1 {
