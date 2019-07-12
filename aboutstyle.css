@@ -10,3 +10,11 @@ body{
     width: 600px;
     height: 300px;
 }
+
+.borderbox h1 {
+    font-size: 120px
+}
+
+.borderbox h3 {
+    font-size: 20px
+}

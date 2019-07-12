@@ -19,13 +19,14 @@
         </div>        
             <ul class="nav-links">
                 <li><a href="index.html">Sleepy</a></li>
-                <li><a href="data.html">Data Statistics</a></li>
-                <li><a href="setting.html">Setting</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="data.html">Statistics</a></li>
+                <li><a href="setting.html">Control</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="#">Contact Us</a></li>
+                
             </ul>
     </nav>
-    <div class="setting_box">
+    <div class="setting_box" >
             <div class="row">
                 <div class="col-sm-6" id="column_1">
                     <h1 id="switch">Switch</h1>
@@ -33,22 +34,22 @@
                         <button type="button" class="btn btn-dark" onclick="doMachine()">ON / OFF</button>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <h1 id="time">Time</h1>
-                <div id="tpick">
-                        <h3>Set time to operate system.</h3>
-                        <div id="tpick-h"></div>
-                        <div id="tpick-m"></div>
-                        <div id="tpick-s"></div>
-                        <div>
+                <div class="col-sm-6" id="column_2">
+                    <!-- [SET ALARM] -->
+                    <div id="tpick">
+                            <h1 class="header" id= "time">Time</h1>
+                            <div id="tpick-h"></div>
+                            <div id="tpick-m"></div>
+                            <div id="tpick-s"></div>
+                            <div>
                             <input type="button" value="Set" id="tset"/>
                             <input type="button" value="Reset" id="treset" disabled/>
+                            </div>
                         </div>
-                        </div>
-                        
-                    
-                    
+      
+
                 </div>
+                
         
             
             

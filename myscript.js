@@ -75,10 +75,9 @@ function Collect() {
         document.getElementById("end_time").innerHTML = `<h4>${timezone_final}</h4>`;
         count_out++;
     }
-    
     if (laser == "on" && check_in == 0) {
         timezonela = Setdata();
-        document.getElementById("lasor").innerHTML = `<h4>${timezonela}</h4>`;
+        document.getElementById("timeinterval").innerHTML = `<h4>${timezonela}</h4>`;
         check_in++;
     }
 }
