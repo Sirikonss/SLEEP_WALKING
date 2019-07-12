@@ -10,7 +10,8 @@ setInterval(()=> {
 })
     .then(function(myJson) {
         console.log(JSON.stringify(myJson));
-        button = myJson.machine
+        button = myJson.button
+        console.log(button)
         laser = myJson.alarm
         if (button == "on") {
             Collect();
@@ -33,12 +34,25 @@ var datetime = time;
 return datetime;
 }
 
-function Showtime() {
+function ShowDate() {
+    var d = new Date();
+    var month_name = new Array();
+    month_name[0] = "January";
+    month_name[1] = "February";
+    month_name[2] = "March";
+    month_name[3] = "April";
+    month_name[4] = "May";
+    month_name[5] = "June";
+    month_name[6] = "July";
+    month_name[7] = "August";
+    month_name[8] = "September";
+    month_name[9] = "October";
+    month_name[10] = "November";
+    month_name[11] = "December";
     var today = new Date();
     var year = today.getFullYear();
-    var month = today.getMonth()+1;
+    var month = month_name[today.getMonth()];
     var date = today.getDate();
-    console.log(year,month,date);
     document.getElementById("month").innerHTML = `<h2>${month}</h2>`;
     document.getElementById("date").innerHTML = `<h1>${date}</h1>`;
     document.getElementById("year").innerHTML = `<h3>${year}</h3>`;
@@ -66,6 +80,12 @@ if (laser == "on" && check_in == 0) {
     check_in++;
 }
 }
+<<<<<<< HEAD
+=======
+
+function Diff() {
+var temp=[];
+>>>>>>> 49b5a2cd2852bcf44864a7feb7351e053467e2c3
 var starttime = timezonein;
 var endtime = timezonefi;
 function Diff() {
@@ -83,3 +103,36 @@ function Diff() {
     document.getElementById("demo").innerHTML = res;
     }
 
+
+var machine="off"
+
+function createData(obj) {
+    return {data:{obj}}
+}
+
+function DoMachine(){
+    var url = 'https://exceed.superposition.pknn.dev/data/Group9';
+    var machineOFF = {"value" : "off" };
+    var machineON = {"value" : "on" };
+    let check = machine
+    if (check == 'on') {
+    fetch(url, {
+        method: 'POST', 
+        body: JSON.stringify(createData(machineOFF)), 
+        headers:{
+            'Content-Type': 'application/json'
+    }
+    })}
+    else {
+        fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(createData(machineON)), 
+            headers:{
+                'Content-Type': 'application/json'
+    }
+    })
+    }
+}
+
+
+ShowDate()

@@ -17,6 +17,7 @@
 }
 
 #time{
+    margin-bottom: 0;
     padding: 2rem;
     font-size: 5rem; 
     color: white;
@@ -45,6 +46,7 @@
 /* [TIME PICKER] */
 #tpick {
     margin: 0 auto;
+    margin-top: 0;
     max-width: 350px;
     padding: 10px;
     /*background: #f2f2f2;*/
