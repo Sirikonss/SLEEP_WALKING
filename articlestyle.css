@@ -1,0 +1,36 @@
+body{
+    color : white;
+}
+
+
+#headinsomnia {
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+
+#picfacts {
+    margin-left: -120px;
+    margin-bottom: 50px;
+}
+
+#insomnia {
+    background-color: rgba(46, 39, 87, 0.699);
+    margin-top: -60px;
+    margin-bottom: 3rem;
+    padding-top : 2%;
+}
+
+#factsinsomnia {
+    margin-left: -30px;
+}
+
+#factsinsomnia p {
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+#factsinsomnia  h2{
+    margin-top: 5rem;
+    margin-bottom: -60px;
+    margin-left: -40px;
+}
