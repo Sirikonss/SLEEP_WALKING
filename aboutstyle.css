@@ -1,0 +1,12 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.borderbox {
+    color: white;
+    margin: auto;
+    text-align: center;
+    margin-top: 100px;
+    width: 600px;
+    height: 300px;
+}
