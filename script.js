@@ -29,8 +29,17 @@ var datetime = time;
 return datetime;
 }
 
-var count_in = 0;
-var count_out = 0;
+function Showtime() {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
+    var date = today.getDate();
+    console.log(year,month,date);
+    document.getElementById("month").innerHTML = `<h2>${month}</h2>`;
+    document.getElementById("date").innerHTML = `<h1>${date}</h1>`;
+    document.getElementById("year").innerHTML = `<h3>${year}</h3>`;
+}
+
 function Collect() {
 var timezonein = 0;
 var timezonefi = 0;
