@@ -9,7 +9,6 @@ body {
     text-align: center;
     margin : 2rem;
     margin-top : 3rem;
-    font-style: bold;
 }
 
 .date {
@@ -74,7 +73,6 @@ body {
 
 .performance span {
     color: white;
-    font-style: bold;
     font-size : 1.8rem;
 }
 
