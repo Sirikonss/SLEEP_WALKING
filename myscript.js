@@ -13,6 +13,9 @@ setInterval(() => {
             console.log(button)
             laser = myJson.alarm
             Collect();
+            if(button = "off"){
+                Diff();
+            }
             // if (button == "on") {
             //     Collect();
             // }
@@ -77,27 +80,30 @@ function Collect() {
     }
     if (laser == "on" && check_in == 0) {
         timezonela = Setdata();
-        document.getElementById("timeinterval").innerHTML = `<h4>${timezonela}</h4>`;
+        document.getElementById("lasor").innerHTML = `<h4>${timezonela}</h4>`;
         check_in++;
     }
 }
 
 
 function Diff() {
-    var temp = [];
+    var temp = 0;
     var starttime = timezone_initial;
     var endtime = timezone_final;
     start = starttime.split(":");
     end = endtime.split(":");
-    for (var i = 0; i < 3; i++) {
-        start[i] = parseFloat(start[i]);
-        end[i] = parseFloat(end[i]);
-    }
-    for (var i = 0; i < 3; i++) {
-        temp[i] = end[i] - start[i];
-        temp[i] = Math.abs(temp[i]);
-    }
-    document.getElementById("timeinterval").innerHTML = `<h3>${temp[0] + ":" + temp[1] + ":" + temp[2]}</h3>`;
+    temp_hour = Math.abs(end[0] - start[0]);
+    temp_minute = Math.abs(end[1] - start[1]);
+    // for (var i = 0; i < 3; i++) {
+    //     start[i] = parseFloat(start[i]);
+    //     end[i] = parseFloat(end[i]);
+    // }
+    // for (var i = 0; i < 3; i++) {
+    //     temp[i] = end[i] - start[i];
+    //     temp[i] = Math.abs(temp[i]);
+    // }
+    // document.getElementById("timeinterval").innerHTML = `<h3>${temp[0] + ":" + temp[1] + ":" + temp[2]}</h3>`;
+    document.getElementById("timeinterval").innerHTML = `<h3>${temp_hour} : ${temp_minute}</h3>`;
 }
 
 function createData(obj) {
