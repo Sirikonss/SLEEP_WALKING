@@ -10,7 +10,8 @@ setInterval(()=> {
 })
     .then(function(myJson) {
         console.log(JSON.stringify(myJson));
-        button = myJson.machine
+        button = myJson.button
+        console.log(button)
         laser = myJson.alarm
         if (button == "on") {
             Collect();
@@ -72,7 +73,6 @@ else if (button == "off" && timezonefi == "0" && count_out == 1){
 }
 }
 
-
 function Diff() {
 var temp=[];
 var starttime = timezonein;
@@ -89,5 +89,37 @@ for (var i=0;i<3;i++) {
 }
 document.getElementById("timeinterval").innerHTML = `<h3>${temp[0] + ":" + temp[1] + ":" + temp[2]}</h3>`  ;                    
 }
+
+
+var machine="off"
+
+function createData(obj) {
+    return {data:{obj}}
+}
+
+function DoMachine(){
+    var url = 'https://exceed.superposition.pknn.dev/data/Group9';
+    var machineOFF = {"value" : "off" };
+    var machineON = {"value" : "on" };
+    let check = machine
+    if (check == 'on') {
+    fetch(url, {
+        method: 'POST', 
+        body: JSON.stringify(createData(machineOFF)), 
+        headers:{
+            'Content-Type': 'application/json'
+    }
+    })}
+    else {
+        fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(createData(machineON)), 
+            headers:{
+                'Content-Type': 'application/json'
+    }
+    })
+    }
+}
+
 
 ShowDate()

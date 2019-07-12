@@ -66,9 +66,6 @@ var ac = {
     reset : function () {
     // ac.reset() : reset the alarm
   
-      if (!ac.sound.paused) {
-        ac.sound.pause();
-      }
       ac.alarm = null;
       ac.thr.disabled = false;
       ac.thm.disabled = false;
