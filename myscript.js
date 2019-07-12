@@ -1,5 +1,5 @@
-var button
-var laser
+var button = "off"
+var laser = ""
 var timezone_initial = 0;
 var timezone_final = 0;
 setInterval(() => {
@@ -9,30 +9,34 @@ setInterval(() => {
         })
         .then(function (myJson) {
             console.log(JSON.stringify(myJson));
-            button = myJson.button
+            button = myJson.machine
             console.log(button)
             laser = myJson.alarm
-            if (button == "on") {
-                Collect();
-            }
-            else {
-                Collect();
-                Diff();
-            }
+            Collect();
+            // if (button == "on") {
+            //     Collect();
+            // }
+            // else {
+            //     Collect();
+            //     Diff();
+            // }
+            // if (laser == "on") {
+            //     Collect();
+            // }
         });
 }, 1000)
 
 
 function Setdata() {
     var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    // var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var datetime = time.toString();
     return datetime;
 }
 
 function ShowDate() {
-    var d = new Date();
+    // var d = new Date();
     var month_name = new Array();
     month_name[0] = "January";
     month_name[1] = "February";
@@ -57,6 +61,7 @@ function ShowDate() {
 
 var count_in = 0
 var count_out = 0
+var check_in = 0
 
 function Collect() {
     if (button == "on" && timezone_initial == "0" && count_in == 0) {
@@ -70,7 +75,14 @@ function Collect() {
         document.getElementById("end_time").innerHTML = `<h4>${timezone_final}</h4>`;
         count_out++;
     }
+    
+    if (laser == "on" && check_in == 0) {
+        timezonela = Setdata();
+        document.getElementById("lasor").innerHTML = `<h4>${timezonela}</h4>`;
+        check_in++;
+    }
 }
+
 
 function Diff() {
     var temp = [];
@@ -100,9 +112,11 @@ var alarm_off = "off";
 function doMachine() {
     if (machine === "on") {
         machine = "off";
+        console.log("OFF");
         postData(machine, alarm_off);
     }else {
         machine = "on";
+        console.log("ON");
         postData(machine, alarm_on);
     }
 }
@@ -129,3 +143,4 @@ function postData(machine, alarm) {
 }
 
 
+ShowDate()
