@@ -65,22 +65,39 @@ function ShowDate() {
     document.getElementById("year").innerHTML = `<h3>${year}</h3>`;
 }
 
+let st = document.getElementById("id").value;
+let end = document.getElementById("id").value;
 var count_in = 0
 var count_out = 0
 var check_in = 0
+var time = Setdata();
+
+
+var laser_on = "on";
+var laser_off = "off";
 
 function Collect() {
-    if (button == "on" && timezone_initial == "0" && count_in == 0) {
-        timezone_initial = Setdata();
-        document.getElementById("start_time").innerHTML = `<h4>${timezone_initial}</h4>`;
-        count_in++;
-        count_out++;
+        if (button == "on" && count_in == 0 ) {
+            timezonein = Setdata();
+            document.getElementById("start_time").innerHTML = `<h4>${timezonein}</h4>`;
+            count_in++;
+            count_out++;
+        }
     }
-    else if (button == "off" && timezone_final == "0" && count_out == 1) {
-        timezone_final = Setdata();
-        document.getElementById("end_time").innerHTML = `<h4>${timezone_final}</h4>`;
-        count_out++;
-    }
+    
+        if (button == "off" && count_in == 0 ) {
+            timezonein = Setdata();
+            document.getElementById("start_time").innerHTML = `<h4>${timezonefi}</h4>`;
+            count_in++;
+            count_out++;
+        }
+    
+    if (laser == "on" && check_in == 0) {
+        timezonela = Setdata();
+        document.getElementById("id").innerHTML = `<h4>${timezonela}</h4>`;
+        check_in++;
+        }
+        
     if (laser == "on" && check_in == 0) {
         timezonela = Setdata();
         document.getElementById("lasor").innerHTML = `<h4>${timezonela}</h4>`;
@@ -111,6 +128,63 @@ function Collect() {
         check_in++;
     }
     
+}
+
+function timer(){
+    if (st <= time && time < end) {
+        if (button == "on" && count_in == 0 ) {
+            timezonein = Setdata();
+            document.getElementById("start_time").innerHTML = `<h4>${timezonein}</h4>`;
+            count_in++;
+        }
+        else if (button == "off" && count_in == 0 ) {
+           //สั่งให้ server เปิด    
+           postData(button,laser_on);
+        }
+    }
+    
+    if (end == time) {
+       if (button == "on") {
+            //สั่งให้ server ปิด
+            postData(button,laser_off);
+        }
+    }
+
+    if (laser == "on" && check_in == 0) {
+        timezonela = Setdata();
+        document.getElementById("id").innerHTML = `<h4>${timezonela}</h4>`;
+        check_in++;
+        }
+    
+    if (laser == "on" && check_in == 0) {
+        timezonela = Setdata();
+        document.getElementById("lasor").innerHTML = `<h4>${timezonela}</h4>`;
+        document.getElementById("containbox").innerHTML += 
+        `<div class="borderbox">
+        <div class="date">
+            <h2 id="month">JULY</h2>
+            <h1 id="date">15<h1>
+            <h3 id="year">2019</h3>        
+        </div>
+        <div class="performance">
+            <div class="perf" id="perf">
+                <h3>Start:</h3>
+                <h3 id="start_time">00:00:00</h3>
+                <h3>End:</h3>
+                <h3 id="end_time">00:00:00</h3>
+            </div>
+            <div class="lasor">
+                <h3 >Sleep-walking detected time :</h3>
+                <h3 id="lasor">Sensor status</h3>
+            </div>
+        </div>
+        <div class="sleephr">
+            <h3>Sleep Hour:</h3>
+            <h3>${timezonela}</h3>
+        </div>
+    </div>`;
+        check_in++;
+    }
 }
 
 
