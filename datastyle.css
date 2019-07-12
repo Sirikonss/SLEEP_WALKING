@@ -1,8 +1,4 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: rgb(43,88,118);
-    background: linear-gradient(270deg,rgba(78,67,118,1) 0% ,rgba(43,88,118,1) 69%);
-}
+
 
 .borderbox {
     display: flex;
