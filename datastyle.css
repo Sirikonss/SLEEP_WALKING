@@ -1,9 +1,7 @@
-
-
 .borderbox {
     display: flex;
     text-align: center;
-    margin: 2rem;
+    margin-right: 7rem;
     margin-top : 3rem;
 }
 
@@ -89,4 +87,8 @@
     margin-left: 0;
     opacity: 0.8;
     border-radius: 20px;
+}
+
+#timeinterval {
+    color: white;
 }
