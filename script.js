@@ -19,13 +19,15 @@ setInterval(()=> {
             Collect();
             Diff();
         }
+        if (laser == "on") {
+            Collect();
+        }
 });
 },1000)
 
 
 function Setdata() {
 var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 var datetime = time;
 return datetime;
@@ -44,6 +46,7 @@ function Showtime() {
 
 var count_in = 0
 var count_out = 0
+var check_in = 0
 
 function Collect() {
 if (button == "on" && timezonein == "0" && count_in == 0) {
@@ -57,23 +60,26 @@ else if (button == "off" && timezonefi == "0" && count_out == 1){
     document.getElementById("end_time").innerHTML = `<h4>${timezonefi}</h4>`;
     count_out++;
 }
+if (laser == "on" && check_in == 0) {
+    timezonela = Setdata();
+    document.getElementById("id").innerHTML = `<h4>${timezonela}</h4>`;
+    check_in++;
 }
-
-
-function Diff() {
-var temp=[];
+}
 var starttime = timezonein;
 var endtime = timezonefi;
-start = starttime.split(":");
-end = endtime.split(":");
-for (var i=0;i<3;i++) {
-    start[i] = parseFloat(start[i]);
-    end[i] = parseFloat(end[i]);
-}
-for (var i=0;i<3;i++) {
-    temp[i] = end[i] - start[i];
-    temp[i] = Math.abs(temp[i]);
-}
-document.getElementById("timeinterval").innerHTML = `<h3>${temp[0] + ":" + temp[1] + ":" + temp[2]}</h3>`  ;                    
-}
+function Diff() {
+    start = starttime.split(":");
+    end = endtime.split(":");
+    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+    var diff = endDate.getTime() - startDate.getTime();
+    var hours = Math.floor(diff / 1000 / 60 / 60);
+    diff -= hours * (1000 * 60 * 60);
+    var minutes = Math.floor(diff / 1000 / 60);
+    if (hours < 0)
+        hours = hours + 24;
+    var res = (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minutes ;
+    document.getElementById("demo").innerHTML = res;
+    }
 
