@@ -2,6 +2,8 @@ var button = "off"
 var laser = ""
 var timezone_initial = 0;
 var timezone_final = 0;
+
+
 setInterval(() => {
     fetch('https://exceed.superposition.pknn.dev/data/Group9')
         .then(function (response) {
@@ -32,11 +34,12 @@ setInterval(() => {
 
 function Setdata() {
     var today = new Date();
-    // var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var day = today.getDate()+'/'+today.getMonth()+'/'+today.getFullYear()
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var datetime = time.toString();
     return datetime;
 }
+
 
 function ShowDate() {
     // var d = new Date();
@@ -81,8 +84,33 @@ function Collect() {
     if (laser == "on" && check_in == 0) {
         timezonela = Setdata();
         document.getElementById("lasor").innerHTML = `<h4>${timezonela}</h4>`;
+        document.getElementById("containbox").innerHTML += 
+        `<div class="borderbox">
+        <div class="date">
+            <h2 id="month">JULY</h2>
+            <h1 id="date">15<h1>
+            <h3 id="year">2019</h3>        
+        </div>
+        <div class="performance">
+            <div class="perf" id="perf">
+                <h3>Start:</h3>
+                <h3 id="start_time">00:00:00</h3>
+                <h3>End:</h3>
+                <h3 id="end_time">00:00:00</h3>
+            </div>
+            <div class="lasor">
+                <h3 >Sleep-walking detected time :</h3>
+                <h3 id="lasor">Sensor status</h3>
+            </div>
+        </div>
+        <div class="sleephr">
+            <h3>Sleep Hour:</h3>
+            <h3>${timezonela}</h3>
+        </div>
+    </div>`;
         check_in++;
     }
+    
 }
 
 
@@ -94,17 +122,10 @@ function Diff() {
     end = endtime.split(":");
     temp_hour = Math.abs(end[0] - start[0]);
     temp_minute = Math.abs(end[1] - start[1]);
-    // for (var i = 0; i < 3; i++) {
-    //     start[i] = parseFloat(start[i]);
-    //     end[i] = parseFloat(end[i]);
-    // }
-    // for (var i = 0; i < 3; i++) {
-    //     temp[i] = end[i] - start[i];
-    //     temp[i] = Math.abs(temp[i]);
-    // }
-    // document.getElementById("timeinterval").innerHTML = `<h3>${temp[0] + ":" + temp[1] + ":" + temp[2]}</h3>`;
     document.getElementById("timeinterval").innerHTML = `<h3>${temp_hour} : ${temp_minute}</h3>`;
 }
+
+
 
 function createData(obj) {
     return { data: { ...obj } }
@@ -146,6 +167,4 @@ function postData(machine, alarm) {
     console.log("exit PostData")
     
 }
-
-
 ShowDate()

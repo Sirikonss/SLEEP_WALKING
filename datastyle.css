@@ -14,7 +14,7 @@ body{
     width: 250px;
     height: 300px;
     padding: 2rem;
-    margin-top : 3rem;
+    margin-top : 0.5rem;
     margin-bottom : 2rem;
     margin-left: 7rem;
     opacity: 0.8;
@@ -55,7 +55,7 @@ body{
     width: 1000px;
     height: 300px;
     padding: 2rem;
-    margin-top : 3rem;
+    margin-top : 0.5rem;
     margin-bottom : 2rem;
     border-radius: 20px;
     
@@ -80,6 +80,7 @@ body{
     color: white;
     display: flex;
     margin-inline: 200px;
+
     font-size: 1.8rem;
 }
 .sleephr {
@@ -89,7 +90,7 @@ body{
     width: 250px;
     height: 300px;
     padding: 2rem;
-    margin-top : 3rem;
+    margin-top : 0.5rem;
     margin-bottom : 2rem;
     opacity: 0.8;
     border-radius: 20px;
