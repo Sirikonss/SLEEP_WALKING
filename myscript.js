@@ -1,4 +1,5 @@
 var laser = ""
+let alarm = "off";
 
 setInterval(() => {
     fetch('https://exceed.superposition.pknn.dev/data/Group9')
@@ -6,20 +7,36 @@ setInterval(() => {
             return response.json();
         })
         .then(function (myJson) {
-            console.log(JSON.stringify(myJson));
-            button = myJson.machine
-            console.log(button)
-            laser = myJson.alarm
-            // if (button == "on") {
-            //     Collect();
-            // }
-            // else {
-            //     Collect();
-            //     Diff();
-            // }
-            // if (laser == "on") {
-            //     Collect();
-            // }
+            console.log(myJson);
+            if (myJson.alarm != alarm){
+                if(myJson.alarm == "on" && alarm == "off"){
+                    let alert = document.getElementsByClassName("sleepwalk")
+                    alert[alert.length-1].innerText += Setdata();
+                }
+
+                alarm = myJson.alarm ;
+            }
+            if (myJson.machine == "off" && machine == "on" ) {
+                machine ="off";
+                let etime = new Date();
+                current_endtime = etime.getTime();
+                let timezone_final = Setdata();
+                let ends = document.getElementsByClassName("endtime") ;
+                ends[ends.length-1].innerHTML = `${timezone_final}`;
+                document.getElementById("end_time").innerHTML = `${timezone_final}`;
+                Diff(current_starttime, current_endtime);
+                machine = "off";
+                addcard();
+            }
+            else if (myJson.machine == "on" && machine == "off") {
+                machine = "on" ;
+                let stime = new Date();
+                current_starttime = stime.getTime();
+                let timezone_initial = Setdata();
+                let starts = document.getElementsByClassName("starttime") ;
+                starts[starts.length-1].innerHTML = `${timezone_initial}`;
+                machine = "on";
+            }
         });
 }, 1000)
 
@@ -57,16 +74,12 @@ function ShowDate() {
     document.getElementById("year").innerHTML = `<h3>${year}</h3>`;
 }
 
-var count_in = 0
-var count_out = 0
-var check_in = 0
-var time_final = 0
-
 
 
 function Diff(start, end) {
     let m = (end - start) * 0.001 / 60;
-    document.getElementById("timeinterval").innerHTML = `<h3>${Math.floor(m/60)} : ${Math.floor(m - Math.floor(m/60))}</h3>`;
+    let dif = document.getElementsByClassName("sleephour");
+    dif[dif.length-1].innerHTML = `<h3>${Math.floor(m/60)} : ${Math.floor(m - Math.floor(m/60))}</h3>`;
 }
 
 
@@ -76,8 +89,7 @@ function createData(obj) {
 }
 
 var machine = "off";
-var alarm_on = "on";
-var alarm_off = "off";
+
 
 let current_starttime;
 let current_endtime;
@@ -146,13 +158,13 @@ function addcard() {
                     <h3 class="endtime" id="end_time">0</h3>
                 </div>
                 <div class="lasor">
-                    <h3 >Sleep-walking detected time :</h3>
+                    <h3 class="sleepwalk" >Sleep-walking detected time :</h3>
                     <h3 id="lasor">0</h3>
                 </div>
             </div>
             <div class="sleephr">
-                <h4>Sleep Hour:</h4>
-                <h3 id="timeinterval">00:00</h3>
+                <h4  >Sleep Hour:</h4>
+                <h3 class="sleephour" id="timeinterval">00:00</h3>
             </div>
         </div>`;
 }
@@ -179,12 +191,6 @@ function settime() {
     }
     console.log("SLEEPPPPPPP");
 }
-
-
-
-
-
-
 
 function postData(machine, alarm) {
     console.log("enter postData");

@@ -1,0 +1,89 @@
+body{
+    color : white;
+}
+
+
+#headinsomnia {
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+
+#picfacts {
+    margin-left: -120px;
+    margin-bottom: 50px;
+}
+
+#insomnia {
+    background-color: rgba(46, 39, 87, 0.699);
+    margin-top: -120px;
+    margin-bottom: 3rem;
+    padding-top : 2%;
+}
+
+#insomnia p {
+    font-size: 20px;
+}
+
+#factsinsomnia {
+    margin-left: -20px;
+}
+
+#factsinsomnia p {
+    font-size: 20px;
+    margin-top: -30px;
+}
+
+#factsinsomnia  h2{
+    margin-top: 2rem;
+    margin-left: -20px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+#type {
+    text-align: center;
+    background-color: rgba(46, 39, 87, 0.699);
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1100px;
+    padding: 10px; 
+}
+
+#threetype {
+    margin: auto;
+    width: 1100px;
+    margin-bottom: 100px;
+}
+
+#three {
+    background-color: rgba(94, 35, 81, 0.808);
+    border-radius: 5%;
+    margin-right: 25px;
+    margin-top: 30px;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+#three h3{
+    font-size: 30px;
+}
+
+#three p{
+    font-size: 20px;
+}
+
+#cause ul {
+    text-align: left;
+    font-size: 20px;
+}
+
+#signandsymptoms {
+    margin-top: 80px;
+    margin-bottom: 60px
+}
+
+#signandsymptoms ul {
+    text-align: left;
+}
+
