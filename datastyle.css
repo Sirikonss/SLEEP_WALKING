@@ -1,0 +1,78 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: rgb(43,88,118);
+    background: linear-gradient(270deg,rgba(78,67,118,1) 0% ,rgba(43,88,118,1) 69%);
+}
+
+.borderbox {
+    display: flex;
+    text-align: center;
+    margin : 2rem;
+    margin-top : 3rem;
+    font-style: bold;
+}
+
+.date {
+    background:rgba(0, 0, 0, 0.616);
+    margin: auto;
+    width: 250px;
+    height: 300px;
+    padding: 2rem;
+    margin-top : 3rem;
+    margin-bottom : 5rem;
+    margin-left: 7rem;
+    opacity: 0.8;
+    border-radius: 20px;
+}
+
+.date h2 {
+    color: rgba(255, 255, 255, 0.808);
+    text-align: center;
+    letter-spacing: 5px;
+    margin: auto;
+    margin-top: 0rem;
+    font-size : 1.8rem;
+}
+
+
+.date h1 {
+    color: white;
+    text-align: center;
+    margin: auto;
+    margin-top: 0.25rem;
+    font-size : 8rem;
+}
+
+.date h3 {
+    color: rgba(255, 255, 255, 0.514);
+    text-align: center;
+    margin: auto;
+    margin-top: 1rem;
+    font-size : 1.5rem;
+}
+
+.performance {
+    background: rgba(0, 0, 0, 0.616);
+    margin: auto;
+    width: 1000px;
+    height: 300px;
+    padding: 2rem;
+    margin-top : 3rem;
+    margin-bottom : 5rem;
+    margin-right: 5rem;
+    opacity: 0.8;
+    border-radius: 20px;
+}
+
+.performance h2 {
+    color: white;
+    font-size : 1.8rem;
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.performance span {
+    color: white;
+    font-size : 1.8rem;
+    text-align: center;
+}
