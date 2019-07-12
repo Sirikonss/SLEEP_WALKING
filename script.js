@@ -11,14 +11,11 @@ setInterval(()=> {
         button = myJson.machine
         laser = myJson.alarm
         if (button == "on") {
-
             Collect();
         }
         else {
-            timeoff = Collect();
-            document.getElementById("end_time").innerHTML = `<h4>${timeoff}</h4>` ;
-            res = Diff();
-            document.getElementById("timeinterval").innerHTML = `<h3>${res}</h3>`  
+            Collect();
+            Diff();
         }
 });
 },1000)
@@ -40,7 +37,7 @@ if (button == "on" && timezonein == "0") {
     document.getElementById("start_time").innerHTML = `<h4>${timezonein}</h4>`;
 }
 else if (button == "off" && timezonefi == "0"){
-    timezonein = Setdata();
+    timezonefi = Setdata();
     document.getElementById("end_time").innerHTML = `<h4>${timezonefi}</h4>`;
 }
 }
