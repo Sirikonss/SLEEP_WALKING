@@ -1,3 +1,6 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
 .borderbox {
     display: flex;
     text-align: center;
