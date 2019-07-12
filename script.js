@@ -40,6 +40,9 @@ function Showtime() {
     document.getElementById("year").innerHTML = `<h3>${year}</h3>`;
 }
 
+var count_in = 0
+var count_out = 0
+
 function Collect() {
 var timezonein = 0;
 var timezonefi = 0;
