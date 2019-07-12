@@ -1,0 +1,78 @@
+.setting_box{
+    margin : auto;
+    margin-top: 2rem;
+    padding : 1rem;
+    width : 80%;
+    
+    text-align: center;
+    
+    
+    border-radius : 10px;
+}
+#switch {
+    
+    padding: 2rem;
+    font-size: 5rem; 
+    color: white;
+}
+
+#time{
+    padding: 2rem;
+    font-size: 5rem; 
+    color: white;
+
+}
+
+
+.setting_box h1 {
+    color: rgba(78,67,118,1);
+    padding-bottom: 15px;
+    font-style: bold;
+}
+
+
+.btn {
+    margin :  auto;
+    font-size: 2rem;
+    width : 200px;
+    height : 120px;
+    background: #ffb347;
+    opacity: 1;
+    border : none;
+    border-radius:20px; 
+}
+
+/* [TIME PICKER] */
+#tpick {
+    margin: 0 auto;
+    max-width: 350px;
+    padding: 10px;
+    /*background: #f2f2f2;*/
+    white-space: nowrap;
+    color: white;
+  }
+  #tpick-h, #tpick-m, #tpick-s {
+    display: inline-block;
+    width: 32%;
+  }
+  #tpick select {
+    box-sizing: padding-box;
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  #tset, #treset {
+    box-sizing: padding-box;
+    width: 50%;
+    background: #3368b2;
+    color: #fff;
+    padding: 10px;
+    border: 0;
+    cursor: pointer;
+  }
+  #tset:disabled, #treset:disabled {
+    background: #aaa;
+    color: #888;
+  }
+  
