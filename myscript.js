@@ -28,7 +28,7 @@ function Setdata() {
 var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-var datetime = time;
+var datetime = time.toString();
 return datetime;
 }
 
@@ -75,7 +75,7 @@ else if (button == "off" && timezonefi == "0" && count_out == 1){
 
 function Diff() {
 var temp=[];
-var starttime = timezonein;
+var starttime = timezonein  ;
 var endtime = timezonefi;
 start = starttime.split(":");
 end = endtime.split(":");
@@ -97,29 +97,54 @@ function createData(obj) {
     return {data:{obj}}
 }
 
-function DoMachine(){
+    var machineON = "on";
+    var machineOFF = "off";
+    var alarmON = "on";
+    var alarmOFF = "off";
+
+function doMachine(){
     var url = 'https://exceed.superposition.pknn.dev/data/Group9';
-    var machineOFF = {"value" : "off" };
-    var machineON = {"value" : "on" };
+    // var machineOFF = {"value" : "off" };
+    // var machineON = {"value" : "on" };
+   
     let check = machine
     if (check == 'on') {
-    fetch(url, {
-        method: 'POST', 
-        body: JSON.stringify(createData(machineOFF)), 
-        headers:{
-            'Content-Type': 'application/json'
-    }
-    })}
+    // fetch(url, {
+        // method: 'PUT', 
+        // body: JSON.stringify(machineOFF), 
+        // headers:{
+        //     'Content-Type': 'application/json'
+    // }
+    postData(machineOFF,alarmOFF);
+    // })
+}
     else {
-        fetch(url, {
-            method: 'POST', 
-            body: JSON.stringify(createData(machineON)), 
-            headers:{
-                'Content-Type': 'application/json'
-    }
-    })
+        // fetch(url, {
+        //     method: 'PUT', 
+        //     body: JSON.stringify(machineON), 
+        //     headers:{
+        //         'Content-Type': 'application/json'
+    // }
+    // })
+     postData(machineON,alarmON);
     }
 }
 
+function postData(machine,alarm){
+    var url = 'https://exceed.superposition.pknn.dev/data/Group9'; 
+    var data = {
+            "machine":machine,
+            "alarm":alarm
+    };
+    fetch(url, {
+        method: 'Post', 
+        body: JSON.stringify(createData(data)), 
+        headers:{
+            'Content-Type': 'application/json'
+    }
+    }).then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err))
+}
 
 ShowDate()

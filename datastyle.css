@@ -18,7 +18,9 @@ body{
     margin-bottom : 5rem;
     margin-left: 7rem;
     opacity: 0.8;
-    border-radius: 20px;
+    border-radius:20px; 
+    /*border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;*/
 }
 
 .date h2 {
@@ -55,9 +57,10 @@ body{
     padding: 2rem;
     margin-top : 3rem;
     margin-bottom : 5rem;
-    margin-right: 0;
-    opacity: 0.8;
     border-radius: 20px;
+    
+    opacity: 0.8;
+    
 }
 
 .performance h3 {
@@ -88,9 +91,9 @@ body{
     padding: 2rem;
     margin-top : 3rem;
     margin-bottom : 5rem;
-    margin-left: 0;
     opacity: 0.8;
     border-radius: 20px;
+    
 }
 
 #timeinterval {
