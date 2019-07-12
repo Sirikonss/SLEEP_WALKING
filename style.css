@@ -105,29 +105,17 @@ nav {
   }
 }
 
-section{
-  img {
-    max-width: 1%;
-    height: auto;
-
-  }
-}
 .container {
     margin-top: 10px;
     text-align: center;
     padding: 3rem;   
-    
-    
 }
 
 .container h1 {
     color: white;
     font-size: 150px;
-
-
-    
-
 }
+
 .container h3 {
     color: white;
     font-size : 20px;
