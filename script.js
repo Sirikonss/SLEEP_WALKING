@@ -66,3 +66,4 @@ for (var i=0;i<6;i++) {
 }
 return  temp[0] + ":" + temp[1] + ":" + temp[2] + " " + temp[3] + ":" + temp[4] + ":" + temp[5] ;                    
 }
+
