@@ -1,5 +1,4 @@
 var button
-var button
 var laser
 var timezonein = 0;
 var timezonefi = 0;
@@ -80,12 +79,6 @@ if (laser == "on" && check_in == 0) {
     check_in++;
 }
 }
-<<<<<<< HEAD
-=======
-
-function Diff() {
-var temp=[];
->>>>>>> 49b5a2cd2852bcf44864a7feb7351e053467e2c3
 var starttime = timezonein;
 var endtime = timezonefi;
 function Diff() {
