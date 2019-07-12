@@ -57,6 +57,7 @@ function ShowDate() {
 
 var count_in = 0
 var count_out = 0
+var check_in = 0
 
 function Collect() {
     if (button == "on" && timezone_initial == "0" && count_in == 0) {
@@ -69,6 +70,11 @@ function Collect() {
         timezone_final = Setdata();
         document.getElementById("end_time").innerHTML = `<h4>${timezone_final}</h4>`;
         count_out++;
+    }
+    if (laser == "on" && check_in == 0) {
+        timezonela = Setdata();
+        document.getElementById("timeinterval").innerHTML = `<h4>${timezonela}</h4>`;
+        check_in++;
     }
 }
 
