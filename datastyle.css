@@ -1,10 +1,11 @@
 body{
     font-family: 'Montserrat', sans-serif;
+    margin:0;
 }
 .borderbox {
     display: flex;
     text-align: center;
-    margin-right: 7rem;
+    margin-left: 0;
     margin-top : 0.5rem;
 }
 
@@ -93,13 +94,39 @@ body{
     margin-top : 0.5rem;
     margin-bottom : 2rem;
     opacity: 0.8;
-    border-radius: 20px;
+    border-radius: 20px; 
+}
+.sleephr h3{
+    margin-top: 1rem;
+    margin-right: 1.5rem;
     
+}
+
+.starttime, .endtime {
+    position: relative;
 }
 
 #timeinterval {
     color: white;
+    margin-top : 4rem;
+    font-size: 4rem;
 }
 .lasor {
     display : flex;
+    margin-left: 1rem;
+}
+
+.container {
+    margin: auto;
+    margin-left: 6rem;
+    padding: 0;
+}
+
+.resultbox{
+    margin-left:0;
+}
+
+.sleephr h3 {
+    margin-left: 0;
+
 }

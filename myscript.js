@@ -1,8 +1,4 @@
-var button = "off"
 var laser = ""
-var timezone_initial = 0;
-var timezone_final = 0;
-
 
 setInterval(() => {
     fetch('https://exceed.superposition.pknn.dev/data/Group9')
@@ -14,10 +10,6 @@ setInterval(() => {
             button = myJson.machine
             console.log(button)
             laser = myJson.alarm
-            Collect();
-            if(button = "off"){
-                Diff();
-            }
             // if (button == "on") {
             //     Collect();
             // }
@@ -68,61 +60,13 @@ function ShowDate() {
 var count_in = 0
 var count_out = 0
 var check_in = 0
-
-function Collect() {
-    if (button == "on" && timezone_initial == "0" && count_in == 0) {
-        timezone_initial = Setdata();
-        document.getElementById("start_time").innerHTML = `<h4>${timezone_initial}</h4>`;
-        count_in++;
-        count_out++;
-    }
-    else if (button == "off" && timezone_final == "0" && count_out == 1) {
-        timezone_final = Setdata();
-        document.getElementById("end_time").innerHTML = `<h4>${timezone_final}</h4>`;
-        count_out++;
-    }
-    if (laser == "on" && check_in == 0) {
-        timezonela = Setdata();
-        document.getElementById("lasor").innerHTML = `<h4>${timezonela}</h4>`;
-        document.getElementById("containbox").innerHTML += 
-        `<div class="borderbox">
-        <div class="date">
-            <h2 id="month">JULY</h2>
-            <h1 id="date">15<h1>
-            <h3 id="year">2019</h3>        
-        </div>
-        <div class="performance">
-            <div class="perf" id="perf">
-                <h3>Start:</h3>
-                <h3 id="start_time">00:00:00</h3>
-                <h3>End:</h3>
-                <h3 id="end_time">00:00:00</h3>
-            </div>
-            <div class="lasor">
-                <h3 >Sleep-walking detected time :</h3>
-                <h3 id="lasor">Sensor status</h3>
-            </div>
-        </div>
-        <div class="sleephr">
-            <h3>Sleep Hour:</h3>
-            <h3>${timezonela}</h3>
-        </div>
-    </div>`;
-        check_in++;
-    }
-    
-}
+var time_final = 0
 
 
-function Diff() {
-    var temp = 0;
-    var starttime = timezone_initial;
-    var endtime = timezone_final;
-    start = starttime.split(":");
-    end = endtime.split(":");
-    temp_hour = Math.abs(end[0] - start[0]);
-    temp_minute = Math.abs(end[1] - start[1]);
-    document.getElementById("timeinterval").innerHTML = `<h3>${temp_hour} : ${temp_minute}</h3>`;
+
+function Diff(start, end) {
+    let m = (end - start) * 0.001 / 60;
+    document.getElementById("timeinterval").innerHTML = `<h3>${Math.floor(m/60)} : ${Math.floor(m - Math.floor(m/60))}</h3>`;
 }
 
 
@@ -135,17 +79,112 @@ var machine = "off";
 var alarm_on = "on";
 var alarm_off = "off";
 
+let current_starttime;
+let current_endtime;
+
+function postMachine(machine) {
+    console.log("enter postData");
+    var url = 'https://exceed.superposition.pknn.dev/data/Group9/machine';
+    var data = {
+        value : machine,
+    };
+    fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify((data)),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    
+    console.log("exit PostData")
+    
+}
+
 function doMachine() {
-    if (machine === "on") {
-        machine = "off";
-        console.log("OFF");
-        postData(machine, alarm_off);
-    }else {
+    
+    if (machine == "off"){
+        let stime = new Date();
+        current_starttime = stime.getTime();
+        let timezone_initial = Setdata();
+        let starts = document.getElementsByClassName("starttime") ;
+        starts[starts.length-1].innerHTML = `${timezone_initial}`;
         machine = "on";
-        console.log("ON");
-        postData(machine, alarm_on);
+        postMachine(machine);
+        
+
+    }
+    else if (machine == "on") {
+        let etime = new Date();
+        current_endtime = etime.getTime();
+        let timezone_final = Setdata();
+        let ends = document.getElementsByClassName("endtime") ;
+        ends[ends.length-1].innerHTML = `${timezone_final}`;
+        document.getElementById("end_time").innerHTML = `${timezone_final}`;
+        Diff(current_starttime, current_endtime);
+        machine = "off";
+        addcard();
+        postMachine(machine);
+
     }
 }
+
+function addcard() {
+    document.getElementById("containbox").innerHTML += 
+        `<div class="borderbox">
+            <div class="date">
+                <h2 id="month">July</h2>
+                <h1 id="date">15<h1>
+                <h3 id="year">2019</h3>        
+            </div>
+            <div class="performance">
+                <div class="perf" id="perf">
+                    <h3>Start:</h3>
+                    <h3 class="starttime" id="start_time">0</h3>
+                    <h3>End:</h3>
+                    <h3 class="endtime" id="end_time">0</h3>
+                </div>
+                <div class="lasor">
+                    <h3 >Sleep-walking detected time :</h3>
+                    <h3 id="lasor">0</h3>
+                </div>
+            </div>
+            <div class="sleephr">
+                <h4>Sleep Hour:</h4>
+                <h3 id="timeinterval">00:00</h3>
+            </div>
+        </div>`;
+}
+
+let opentime = document.getElementById("start").value;
+let closetime = document.getElementById("close").value;
+ 
+function settime() {
+    let d = new Date() ;
+    if (machine == "on") {
+        if (d.getHours() >= closetime ) {
+            machine = "off" ;
+            postMachine(machine);
+            console.log("P");
+        }
+    }
+    else if (machine == "off") {
+        if (d.getHours() >= opentime ) {
+            machine = "on" ;
+            postMachine(machine);
+            console.log("S");
+
+
+    }
+    console.log("SLEEPPPPPPP");
+}
+
+
+
+
+
+
 
 function postData(machine, alarm) {
     console.log("enter postData");
@@ -167,4 +206,4 @@ function postData(machine, alarm) {
     console.log("exit PostData")
     
 }
-ShowDate()
+}
