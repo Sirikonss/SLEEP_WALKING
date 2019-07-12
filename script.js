@@ -29,12 +29,25 @@ var datetime = time;
 return datetime;
 }
 
-function Showtime() {
+function ShowDate() {
+    var d = new Date();
+    var month_name = new Array();
+    month_name[0] = "January";
+    month_name[1] = "February";
+    month_name[2] = "March";
+    month_name[3] = "April";
+    month_name[4] = "May";
+    month_name[5] = "June";
+    month_name[6] = "July";
+    month_name[7] = "August";
+    month_name[8] = "September";
+    month_name[9] = "October";
+    month_name[10] = "November";
+    month_name[11] = "December";
     var today = new Date();
     var year = today.getFullYear();
-    var month = today.getMonth()+1;
+    var month = month_name[today.getMonth()];
     var date = today.getDate();
-    console.log(year,month,date);
     document.getElementById("month").innerHTML = `<h2>${month}</h2>`;
     document.getElementById("date").innerHTML = `<h1>${date}</h1>`;
     document.getElementById("year").innerHTML = `<h3>${year}</h3>`;
@@ -84,3 +97,4 @@ for (var i=0;i<6;i++) {
 document.getElementById("timeinterval").innerHTML = `<h3>${temp[3] + ":" + temp[4] + ":" + temp[5]}</h3>`  ;                    
 }
 
+ShowDate()
