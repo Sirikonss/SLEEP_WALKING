@@ -29,16 +29,21 @@ var datetime = time;
 return datetime;
 }
 
+var count_in = 0;
+var count_out = 0;
 function Collect() {
 var timezonein = 0;
-var timezonefi=0;
-if (button == "on" && timezonein == "0") {
+var timezonefi = 0;
+if (button == "on" && timezonein == "0" && count_in == 0) {
     timezonein = Setdata();
     document.getElementById("start_time").innerHTML = `<h4>${timezonein}</h4>`;
+    count_in++;
+    count_out++;
 }
-else if (button == "off" && timezonefi == "0"){
+else if (button == "off" && timezonefi == "0" && count_out == 1){
     timezonefi = Setdata();
     document.getElementById("end_time").innerHTML = `<h4>${timezonefi}</h4>`;
+    count_out++;
 }
 }
 
@@ -64,6 +69,6 @@ for (var i=0;i<6;i++) {
     temp[i] = end2[i] - start2[i];
     temp[i] = Math.abs(temp[i]);
 }
-return  temp[0] + ":" + temp[1] + ":" + temp[2] + " " + temp[3] + ":" + temp[4] + ":" + temp[5] ;                    
+document.getElementById("timeinterval").innerHTML = `<h3>${temp[3] + ":" + temp[4] + ":" + temp[5]}</h3>`  ;                    
 }
 
