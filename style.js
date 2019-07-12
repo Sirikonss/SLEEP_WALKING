@@ -1,4 +1,4 @@
-const hamburger = document.querySelector('.hamburger');
+/*const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const links = document.querySelector('.nav-links li');
 
@@ -79,4 +79,4 @@ var ac = {
   };
   
   // INIT - RUN ALARM CLOCK
-  window.addEventListener("load", ac.init);
+  window.addEventListener("load", ac.init);*/

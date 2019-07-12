@@ -14,10 +14,10 @@ setInterval(()=> {
             Collect();
         }
         else {
-            tiomeoff = Collect();
-            document.getElementById("end_time").innerHTML = `<h4>${tiomeoff}</h4>`
+            timeoff = Collect();
+            document.getElementById("end_time").innerHTML = `<h4>${timeoff}</h4>` ;
             res = Diff();
-            document.getElementById("timeinterval").innerHTML = `<h3>${res}</h3>` 
+            document.getElementById("timeinterval").innerHTML = `<h3>${res}</h3>`  
         }
 });
 },1000)
@@ -36,7 +36,6 @@ var timezonein;
 var timezonefi;
 if (button == "off") {
     timezonefi = Setdata();
-    return timezonefi ;
 }
 else {
     timezonein = Setdata();
@@ -68,5 +67,5 @@ for (var i=0;i<6;i++) {
 for (var i=0;i<6;i++) {
     temp[i] = Math.abs(temp[i]);
 }
-return temp[0] + ":" + temp[1] + ":" + temp[2] + " " + temp[3] + ":" + temp[4] + ":" + temp[5] ;                     
+return  temp[0] + ":" + temp[1] + ":" + temp[2] + " " + temp[3] + ":" + temp[4] + ":" + temp[5] ;                    
 }
