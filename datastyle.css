@@ -54,7 +54,7 @@
     padding: 2rem;
     margin-top : 3rem;
     margin-bottom : 5rem;
-    margin-right: 5rem;
+    margin-right: 0;
     opacity: 0.8;
     border-radius: 20px;
 }
@@ -77,4 +77,16 @@
     display: flex;
     margin-inline: 200px;
     font-size: 1.8rem;
+}
+.sleephr {
+    background:rgba(0, 0, 0, 0.616);
+    margin: auto;
+    width: 250px;
+    height: 300px;
+    padding: 2rem;
+    margin-top : 3rem;
+    margin-bottom : 5rem;
+    margin-left: 0;
+    opacity: 0.8;
+    border-radius: 20px;
 }
