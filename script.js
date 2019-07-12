@@ -10,6 +10,9 @@ setInterval(()=> {
         console.log(JSON.stringify(myJson));
         button = myJson.machine
         laser = myJson.alarm
+        if (button == "on") {
+            Collect();
+        }
       });
 },2000)
     function P(){
@@ -65,10 +68,9 @@ setInterval(()=> {
         }
         for (var i=0;i<6;i++) {
             temp[i] = end2[i] - start2[i];
-        }
-        for (var i=0;i<6;i++) {
             temp[i] = Math.abs(temp[i]);
         }
-        return temp[0] + ":" + temp[1] + ":" + temp[2] + " " + temp[3] + ":" + temp[4] + ":" + temp[5] ;                      
+        res =  temp[0] + ":" + temp[1] + ":" + temp[2] + " " + temp[3] + ":" + temp[4] + ":" + temp[5] ; 
+        document.getElementById("id").innerHTML = `<h1>${res}</h1>`                     
     }
 
