@@ -1,35 +1,34 @@
 var button
-var button
 var laser
-var timezonein = 0;
-var timezonefi = 0;
-setInterval(()=> {
-        fetch('https://exceed.superposition.pknn.dev/data/Group9')
-    .then(function(response) {
-        return response.json();
-})
-    .then(function(myJson) {
-        console.log(JSON.stringify(myJson));
-        button = myJson.button
-        console.log(button)
-        laser = myJson.alarm
-        if (button == "on") {
-            Collect();
-        }
-        else {
-            Collect();
-            Diff();
-        }
-});
-},1000)
+var timezone_initial = 0;
+var timezone_final = 0;
+setInterval(() => {
+    fetch('https://exceed.superposition.pknn.dev/data/Group9')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (myJson) {
+            console.log(JSON.stringify(myJson));
+            button = myJson.button
+            console.log(button)
+            laser = myJson.alarm
+            if (button == "on") {
+                Collect();
+            }
+            else {
+                Collect();
+                Diff();
+            }
+        });
+}, 1000)
 
 
 function Setdata() {
-var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-var datetime = time.toString();
-return datetime;
+    var today = new Date();
+    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var datetime = time.toString();
+    return datetime;
 }
 
 function ShowDate() {
@@ -60,91 +59,73 @@ var count_in = 0
 var count_out = 0
 
 function Collect() {
-if (button == "on" && timezonein == "0" && count_in == 0) {
-    timezonein = Setdata();
-    document.getElementById("start_time").innerHTML = `<h4>${timezonein}</h4>`;
-    count_in++;
-    count_out++;
-}
-else if (button == "off" && timezonefi == "0" && count_out == 1){
-    timezonefi = Setdata();
-    document.getElementById("end_time").innerHTML = `<h4>${timezonefi}</h4>`;
-    count_out++;
-}
+    if (button == "on" && timezone_initial == "0" && count_in == 0) {
+        timezone_initial = Setdata();
+        document.getElementById("start_time").innerHTML = `<h4>${timezone_initial}</h4>`;
+        count_in++;
+        count_out++;
+    }
+    else if (button == "off" && timezone_final == "0" && count_out == 1) {
+        timezone_final = Setdata();
+        document.getElementById("end_time").innerHTML = `<h4>${timezone_final}</h4>`;
+        count_out++;
+    }
 }
 
 function Diff() {
-var temp=[];
-var starttime = timezonein  ;
-var endtime = timezonefi;
-start = starttime.split(":");
-end = endtime.split(":");
-for (var i=0;i<3;i++) {
-    start[i] = parseFloat(start[i]);
-    end[i] = parseFloat(end[i]);
+    var temp = [];
+    var starttime = timezone_initial;
+    var endtime = timezone_final;
+    start = starttime.split(":");
+    end = endtime.split(":");
+    for (var i = 0; i < 3; i++) {
+        start[i] = parseFloat(start[i]);
+        end[i] = parseFloat(end[i]);
+    }
+    for (var i = 0; i < 3; i++) {
+        temp[i] = end[i] - start[i];
+        temp[i] = Math.abs(temp[i]);
+    }
+    document.getElementById("timeinterval").innerHTML = `<h3>${temp[0] + ":" + temp[1] + ":" + temp[2]}</h3>`;
 }
-for (var i=0;i<3;i++) {
-    temp[i] = end[i] - start[i];
-    temp[i] = Math.abs(temp[i]);
-}
-document.getElementById("timeinterval").innerHTML = `<h3>${temp[0] + ":" + temp[1] + ":" + temp[2]}</h3>`  ;                    
-}
-
-
-var machine="off"
 
 function createData(obj) {
-    return {data:{...obj}}
+    return { data: { ...obj } }
 }
 
-    var machineON = "on";
-    var machineOFF = "off";
-    var alarmON = "on";
-    var alarmOFF = "off";
+var machine = "off";
+var alarm_on = "on";
+var alarm_off = "off";
 
-function doMachine(){
-    var url = 'https://exceed.superposition.pknn.dev/data/Group9';
-    // var machineOFF = {"value" : "off" };
-    // var machineON = {"value" : "on" };
-   
-    let check = machine
-    if (check == 'on') {
-    // fetch(url, {
-        // method: 'PUT', 
-        // body: JSON.stringify(machineOFF), 
-        // headers:{
-        //     'Content-Type': 'application/json'
-    // }
-    postData(machineOFF,alarmOFF);
-    // })
-}
-    else {
-        // fetch(url, {
-        //     method: 'PUT', 
-        //     body: JSON.stringify(machineON), 
-        //     headers:{
-        //         'Content-Type': 'application/json'
-    // }
-    // })
-     postData(machineON,alarmON);
+function doMachine() {
+    if (machine === "on") {
+        machine = "off";
+        postData(machine, alarm_off);
+    }else {
+        machine = "on";
+        postData(machine, alarm_on);
     }
 }
 
-function postData(machine,alarm){
-    var url = 'https://exceed.superposition.pknn.dev/data/Group9'; 
+function postData(machine, alarm) {
+    console.log("enter postData");
+    var url = 'https://exceed.superposition.pknn.dev/data/Group9';
     var data = {
-            "machine":machine,
-            "alarm":alarm
+        "machine": machine,
+        "alarm": alarm
     };
     fetch(url, {
-        method: 'Post', 
-        body: JSON.stringify(createData(data)), 
-        headers:{
+        method: 'Post',
+        body: JSON.stringify(createData(data)),
+        headers: {
             'Content-Type': 'application/json'
-    }
+        }
     }).then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err))
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    
+    console.log("exit PostData")
+    
 }
 
-ShowDate()
+
