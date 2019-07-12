@@ -1,6 +1,8 @@
 var button
 var button
 var laser
+var timezonein = 0;
+var timezonefi = 0;
 setInterval(()=> {
         fetch('https://exceed.superposition.pknn.dev/data/Group9')
     .then(function(response) {
@@ -44,8 +46,6 @@ var count_in = 0
 var count_out = 0
 
 function Collect() {
-var timezonein = 0;
-var timezonefi = 0;
 if (button == "on" && timezonein == "0" && count_in == 0) {
     timezonein = Setdata();
     document.getElementById("start_time").innerHTML = `<h4>${timezonein}</h4>`;
@@ -59,28 +59,21 @@ else if (button == "off" && timezonefi == "0" && count_out == 1){
 }
 }
 
-function Diff(start, end) {
+
+function Diff() {
 var temp=[];
-starttime = timezonein;
-endtime = timezonefi;
-start = starttime.split(" ");
-end = endtime.split(" ");
-start2 = start[0].split("-");
-end2 = end[0].split("-");
-start3 = start[1].split(":");
-end3 = end[1].split(":");
+var starttime = timezonein;
+var endtime = timezonefi;
+start = starttime.split(":");
+end = endtime.split(":");
 for (var i=0;i<3;i++) {
-    start2.push(start3[i]); 
-    end2.push(end3[i]);
+    start[i] = parseFloat(start[i]);
+    end[i] = parseFloat(end[i]);
 }
-for (var i=0;i<6;i++) {
-    start2[i] = parseFloat(start2[i]);
-    end2[i] = parseFloat(end2[i]);
-}
-for (var i=0;i<6;i++) {
-    temp[i] = end2[i] - start2[i];
+for (var i=0;i<3;i++) {
+    temp[i] = end[i] - start[i];
     temp[i] = Math.abs(temp[i]);
 }
-document.getElementById("timeinterval").innerHTML = `<h3>${temp[3] + ":" + temp[4] + ":" + temp[5]}</h3>`  ;                    
+document.getElementById("timeinterval").innerHTML = `<h3>${temp[0] + ":" + temp[1] + ":" + temp[2]}</h3>`  ;                    
 }
 
