@@ -9,7 +9,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" \
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <title>Data Collection</title>
+    <title>Data Statistics</title>
+    <script>
+            window.onload = function () {
+        
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    title:{
+                        text: "Hours of Sleep",
+                        horizontalAlign: "left"
+                    },
+                    data: [{
+                        type: "doughnut",
+                        startAngle: 60,
+                        //innerRadius: 60,
+                        indexLabelFontSize: 17,
+                        indexLabel: "{label} - #percent%",
+                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                        dataPoints: [
+                            { y: 67, label: "Inbox" },
+                            { y: 28, label: "Archives" },
+                        ]
+                    }]
+                });
+                chart.render();
+                
+                }
+            </script>
+        
 </head>
 <body>
     <nav>
@@ -34,10 +61,12 @@
             <h3>2019</h3>        
         </div>
         <div class="performance">
-            <span>Start:</span>
-            <span>End:</span>   
-            <span>Time-Sleep</span>
-            <h2>Sensor status</h2>
+            <div class="perf" id="perf">
+                    <h3>Start:</h3>
+
+                    <h3>End:</h3>
+            </div>
+            <h3>Sensor status</h3>
         </div>
     </div>
 
@@ -45,5 +74,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" \integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" \crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" \integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" \crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" \integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" \crossorigin="anonymous"></script>
+    <div id="chartContainer" style="background: pink; height: 300px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>  
 </body>
 </html>

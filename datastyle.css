@@ -1,15 +1,10 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: rgb(43,88,118);
-    background: linear-gradient(270deg,rgba(78,67,118,1) 0% ,rgba(43,88,118,1) 69%);
-}
+
 
 .borderbox {
     display: flex;
     text-align: center;
     margin : 2rem;
     margin-top : 3rem;
-    font-style: bold;
 }
 
 .date {
@@ -64,15 +59,22 @@ body {
     border-radius: 20px;
 }
 
-.performance h2 {
+.performance h3 {
     color: white;
     font-size : 1.8rem;
     text-align: left;
+    margin-top: 2rem;
     margin-left: 2rem;
 }
 
 .performance span {
     color: white;
     font-size : 1.8rem;
-    text-align: center;
+}
+
+#perf {
+    color: white;
+    display: flex;
+    margin-inline: 200px;
+    font-size: 1.8rem;
 }
