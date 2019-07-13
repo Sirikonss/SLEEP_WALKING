@@ -27,6 +27,7 @@ setInterval(() => {
                 Diff(current_starttime, current_endtime);
                 machine = "off";
                 addcard();
+                ShowDate();
             }
             else if (myJson.machine == "on" && machine == "off") {
                 machine = "on" ;
@@ -69,9 +70,12 @@ function ShowDate() {
     var year = today.getFullYear();
     var month = month_name[today.getMonth()];
     var date = today.getDate();
-    document.getElementById("month").innerHTML = `<h2>${month}</h2>`;
-    document.getElementById("date").innerHTML = `<h1>${date}</h1>`;
-    document.getElementById("year").innerHTML = `<h3>${year}</h3>`;
+    let months = document.getElementsByClassName("month")
+    months[months.length-1].innerText= `${month}`;
+    let dates = document.getElementsByClassName("date")
+    dates[dates.length-1].innerText = `${date}`;
+    let years = document.getElementById("year")
+    years[years.length-1].innerText = `${year}`;
 }
 
 
@@ -79,7 +83,7 @@ function ShowDate() {
 function Diff(start, end) {
     let m = (end - start) * 0.001 / 60;
     let dif = document.getElementsByClassName("sleephour");
-    dif[dif.length-1].innerHTML = `<h3>${Math.floor(m/60)} : ${Math.floor(m - Math.floor(m/60))}</h3>`;
+    dif[dif.length-1].innerText = `${Math.floor(m/60)} : ${Math.floor(m - Math.floor(m/60))}`;
 }
 
 
@@ -137,6 +141,7 @@ function doMachine() {
         Diff(current_starttime, current_endtime);
         machine = "off";
         addcard();
+        ShowDate();
         postMachine(machine);
 
     }
@@ -144,11 +149,12 @@ function doMachine() {
 
 function addcard() {
     document.getElementById("containbox").innerHTML += 
+    
         `<div class="borderbox">
-            <div class="date">
-                <h2 id="month">July</h2>
-                <h1 id="date">15<h1>
-                <h3 id="year">2019</h3>        
+            <div class="calendar">
+                <h2 class="month" id="month">July</h2>
+                <h1 class="date" id="date">15<h1>
+                <h3 class="year" id="year">2019</h3>        
             </div>
             <div class="performance">
                 <div class="perf" id="perf">
@@ -158,8 +164,8 @@ function addcard() {
                     <h3 class="endtime" id="end_time">0</h3>
                 </div>
                 <div class="lasor">
-                    <h3 class="sleepwalk" >Sleep-walking detected time :</h3>
-                    <h3 id="lasor">0</h3>
+                    <h3 >Sleep-walking detected time :</h3>
+                    <h3 class="sleepwalk"  id="lasor">0</h3>
                 </div>
             </div>
             <div class="sleephr">
@@ -167,6 +173,7 @@ function addcard() {
                 <h3 class="sleephour" id="timeinterval">00:00</h3>
             </div>
         </div>`;
+        
 }
 
 let opentime = document.getElementById("start").value;
@@ -213,3 +220,5 @@ function postData(machine, alarm) {
     
 }
 }
+
+ShowDate()

@@ -2,16 +2,72 @@ body{
     font-family: 'Montserrat', sans-serif;
     margin:0;
 }
+
+#control {
+    display :flex ;
+    
+}
+
+#column_1 {
+    margin-left :6rem;
+    margin-bottom: 3rem;
+    text-align : center;
+}
+#column_2 {
+    margin-top: 3rem;
+    margin-left: 5rem;
+    margin-right :6rem;
+    margin-bottom: 3rem;
+    text-align: center;
+
+}
+
+#start {
+    width : 200px;
+}
+#close {
+    width : 200px;
+}
+#switch {
+        
+    padding: 2rem;
+    font-size: 5rem; 
+    color: white;
+    }
+
+
+.btn {
+    margin :  auto;
+    font-size: 2rem;
+    width : 200px;
+    height : 120px;
+    background: #ffb347;
+    opacity: 1;
+    border : none;
+    border-radius:20px; 
+}
+.control {
+    margin : auto;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    padding : 1rem;
+    width : 80%;
+    text-align: center;
+    border-radius : 10px;
+
+}
+  
 .borderbox {
     display: flex;
     text-align: center;
     margin-left: 0;
     margin-top : 0.5rem;
+    color: white;
 }
 
-.date {
+.calendar {
     background:rgba(0, 0, 0, 0.616);
-    margin: auto;
+   
     width: 250px;
     height: 300px;
     padding: 2rem;
@@ -34,7 +90,7 @@ body{
 }
 
 
-.date h1 {
+h1.date {
     color: white;
     text-align: center;
     margin: auto;
@@ -52,8 +108,8 @@ body{
 
 .performance {
     background: rgba(0, 0, 0, 0.616);
-    margin: auto;
-    width: 1000px;
+    
+    width: 600px;
     height: 300px;
     padding: 2rem;
     margin-top : 0.5rem;
@@ -87,7 +143,6 @@ body{
 .sleephr {
     background:rgba(0, 0, 0, 0.616);
     color: white ;
-    margin: auto;
     width: 250px;
     height: 300px;
     padding: 2rem;
@@ -118,12 +173,12 @@ body{
 
 .container {
     margin: auto;
-    margin-left: 6rem;
-    padding: 0;
+    margin-left: 3rem;
 }
 
 .resultbox{
-    margin-left:0;
+    margin: auto;
+    margin-left: 3rem;
 }
 
 .sleephr h3 {
@@ -137,4 +192,13 @@ body{
 
 .sleephour{
     position: relative;
+}
+.date{
+
+}
+.month{
+
+}
+.year{
+    
 }

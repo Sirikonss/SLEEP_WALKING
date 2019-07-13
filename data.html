@@ -28,43 +28,63 @@
                 
             </ul>
         </nav>
-        <div class="control">
+        <div class="row" id = "control">
+            <div class="col-sm-3" id="column_1">
+                <h1 id="switch">Switch</h1>
+                <div class="btn_po">
+                <button type="button" class="btn btn-dark" onclick="doMachine()">ON / OFF</button>
+                </div>
+            </div>
+            <div class="col-sm-6" id="column_2">
+                <div class="row" style="margin: 70px 0 0 70px">
+                    <div class="d-flex flex-column align-items-center justify-content-around">
+                        <input type="text" placeholder = "Start" class="form-control" id="start">
+                        <input type="text" placeholder = "End"class="form-control" id="close">
+                    </div>
+                    <button type="button" class="btn btn-dark position-relative" style="left: -35px" onclick="settime()">set</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="control">
                 <h1 id="switch">Switch</h1>
                 <div class="btn_po">
                     <button type="button" class="btn btn-dark" onclick="doMachine()">ON / OFF</button>
-                    <input type="text" placeholder = "Start" class="form-control" id="start">
-                    <input type="text" placeholder = "End"class="form-control" id="close">
-                    <button type="button" class="btn btn-dark" onclick="settime()">set</button>
+                    
                 </div>    
-        </div>
-        <div class="container" id="containbox">
-            <div class="resultbox">
-                <div class="borderbox">
-                    <div class="date">
-                        <h2 id="month">JULY</h2>
-                        <h1 id="date">15<h1>
-                        <h3 id="year">2019</h3>        
+        </div> -->
+    
+        <div class="resultbox">
+            <div class="borderbox">
+                <div class="calendar">
+                    <h2 class="month" id="month">JULY</h2>
+                    <h1 class="date" id="date">15<h1>
+                    <h3 class="year" id="year">2019</h3>        
+                </div>
+                <div class="performance">
+                    <div class="perf" id="perf">
+                        <h3>Start:</h3>
+                        <h3 class="starttime" id="start_time">00:00:00</h3>
+                        <h3>End:</h3>
+                        <h3 class="endtime" id="end_time">00:00:00</h3>
                     </div>
-                    <div class="performance">
-                        <div class="perf" id="perf">
-                            <h3>Start:</h3>
-                            <h3 class="starttime" id="start_time">00:00:00</h3>
-                            <h3>End:</h3>
-                            <h3 class="endtime" id="end_time">00:00:00</h3>
-                        </div>
-                        <div class="lasor">
-                            <h3 class="sleepwalk">Sleep-walking detected time :</h3>
-                            <h3 id="lasor">Sensor status</h3>
-                        </div>
-                    </div>
-                    <div class="sleephr">
-                        <h4 >Sleep Hour:</h4>
-                        <h3 class="sleephour"id="timeinterval">00:00</h3>
+                    <div class="lasor">
+                        <h3 class="sleepwalk">Sleep-walking detected time :</h3>
                     </div>
                 </div>
+                <div class="sleephr">
+                    <h4 >Sleep Hour:</h4>
+                    <h3 class="sleephour"id="timeinterval">00:00</h3>
+                </div>
             </div>
+        </div>
+
+        <div class="resultbox" id="containbox">
+
 
         </div>
+
+        
         
 
 
